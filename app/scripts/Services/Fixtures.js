@@ -33,7 +33,7 @@
      };
        
          Fixtures.getAlbum = function() {
-         return albumPicasso;
+            return angular.copy(albumPicasso);
         };
          
          Fixtures.getCollection = function(numberOfAlbums) {
