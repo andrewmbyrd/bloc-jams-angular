@@ -52,7 +52,13 @@
                   return {width: percentString()};
               }
               
-              
+              /*
+              *@desc creates CSS code to set width
+              *@returns a String with format for setting HOW FAR FROM THE LEFT the thumb should be in CSS
+              */
+              scope.thumbStyle = function(){
+                  return {left: percentString()};
+              }
               
               /*
               *@desc gets the percent fill when a seekBar is clicked and updates scope.value
@@ -69,7 +75,7 @@
               scope.trackThumb = function() {
                     $document.bind('mousemove.thumb', function(event) {
                         var percent = calculatePercent(seekBar, event);
-                        scope.$apply(function() {
+                       scope.$apply(function() {
                             scope.value = percent * scope.max;
                         });
                 });
