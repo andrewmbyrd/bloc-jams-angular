@@ -4,11 +4,7 @@
          
         
          
-        /**
-        * @desc gets the picassso album from the fixtures object
-        * @type {Object}
-        */
-         var currentAlbum = Fixtures.getAlbum();
+        
          
         /**
         * @desc Buzz object audio file
@@ -23,8 +19,7 @@
         */
           var setSong = function(song) {
               if (currentBuzzObject) {
-                    currentBuzzObject.stop();
-                    SongPlayer.currentSong.playing = null;
+                    stopSong();
                 }
  
               currentBuzzObject = new buzz.sound(song.audioUrl, {
@@ -50,19 +45,35 @@
         * @returns an integer with index in the album songs array
         */
          var getSongIndex = function(song) {
-            for (var i =0; i <currentAlbum.songs.length; i++){
-                if (currentAlbum.songs[i].title == song.title){
+            for (var i =0; i <SongPlayer.currentAlbum.songs.length; i++){
+                if (SongPlayer.currentAlbum.songs[i].title == song.title){
                     return i;    
                 }
                     
             }
          };
+        
+         
+        /**
+        * @function stopSong
+        * @desc stops the currently playing song and sets .playing to null
+        */
+        var stopSong = function(){
+            currentBuzzObject.stop();
+            SongPlayer.currentSong.playing = null;
+        } 
          
         /**
         * @desc Song object that is currently playing or paused. or null if no song is active
         * @type {Object}
         */
          SongPlayer.currentSong=null;
+         
+         /**
+        * @desc gets the picassso album from the fixtures object
+        * @type {Object}
+        */
+         SongPlayer.currentAlbum = Fixtures.getAlbum();
          
          
         /**
@@ -105,14 +116,41 @@
             currentSongIndex--;
             
             if (currentSongIndex < 0) {
-                currentBuzzObject.stop();
-                SongPlayer.currentSong.playing = null;
+                stopSong();
             } else{
-                var song = currentAlbum.songs[currentSongIndex];
+                var song = SongPlayer.currentAlbum.songs[currentSongIndex];
                 setSong(song);
                 playSong(song);               
             }
         };
+         
+        /**
+        * @function next
+        * @desc sets the current song to the song that comes nextin album song list. Or loops to the first song if it was at the end
+        */
+        SongPlayer.next = function(){
+            var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+            currentSongIndex++;
+            
+            if (currentSongIndex >= SongPlayer.currentAlbum.songs.length) {
+                currentSongIndex = 0;
+            } 
+    
+            var song = SongPlayer.currentAlbum.songs[currentSongIndex];
+            setSong(song);
+            playSong(song);               
+            
+        };
+        
+        /**
+        * @function initialPlay
+        * @desc makes it so that if currentSong===null, the playerBar can play the first song in the album
+        */
+        SongPlayer.initialPlay = function(){
+            var song = SongPlayer.currentAlbum.songs[0];
+            setSong(song);
+            playSong(song);
+        } 
          
          return SongPlayer;
      }
