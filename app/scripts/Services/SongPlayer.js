@@ -1,5 +1,5 @@
 (function() {
-     function SongPlayer(Fixtures) {
+     function SongPlayer($rootScope, Fixtures) {
           var SongPlayer = {};
          
         
@@ -14,7 +14,7 @@
          
         /**
         * @function setSong
-        * @desc Stops currently playing song and loads new audio file as currentBuzzObject
+        * @desc Stops currently playing song and loads new audio file as currentBuzzObject. also constantly updates current song time
         * @param {Object} song
         */
           var setSong = function(song) {
@@ -27,6 +27,13 @@
               preload: true
               });
  
+              currentBuzzObject.bind('timeupdate', function() {
+                $rootScope.$apply(function() {
+                SongPlayer.currentTime = currentBuzzObject.getTime();
+                });
+            });
+              
+              
               SongPlayer.currentSong = song;
           };
          
@@ -61,6 +68,7 @@
         var stopSong = function(){
             currentBuzzObject.stop();
             SongPlayer.currentSong.playing = null;
+            
         } 
          
         /**
@@ -68,6 +76,13 @@
         * @type {Object}
         */
          SongPlayer.currentSong=null;
+         
+         
+        /**
+        * @desc Current playback time (in seconds) of currently playing song
+        * @type {Number}
+        */
+        SongPlayer.currentTime = null;
          
          /**
         * @desc gets the picassso album from the fixtures object
@@ -142,6 +157,18 @@
             
         };
         
+         /**
+        * @function setCurrentTime
+        * @desc Set current time (in seconds) of currently playing song
+        * @param {Number} time
+        */
+        SongPlayer.setCurrentTime = function(time) {
+            if (currentBuzzObject) {
+                currentBuzzObject.setTime(time);
+            }
+        }; 
+         
+         
         /**
         * @function initialPlay
         * @desc makes it so that if currentSong===null, the playerBar can play the first song in the album
@@ -157,5 +184,5 @@
  
      angular
          .module('blocJams')
-         .factory('SongPlayer', SongPlayer);
+         .factory('SongPlayer',["$rootScope", "Fixtures", SongPlayer]);
  })();
