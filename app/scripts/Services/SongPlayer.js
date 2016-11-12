@@ -14,7 +14,7 @@
          
         /**
         * @function setSong
-        * @desc Stops currently playing song and loads new audio file as currentBuzzObject. also constantly updates current song time
+        * @desc Stops currently playing song and loads new audio file as currentBuzzObject. also constantly updates current song time and sets the volume when a song is selected
         * @param {Object} song
         */
           var setSong = function(song) {
@@ -33,7 +33,7 @@
                 });
             });
               
-              
+              currentBuzzObject.setVolume(SongPlayer.volume);
               SongPlayer.currentSong = song;
           };
          
@@ -77,6 +77,10 @@
         */
          SongPlayer.currentSong=null;
          
+        /*
+        *@description: holds the volume for the player
+        */
+        SongPlayer.volume = 80;
          
         /**
         * @desc Current playback time (in seconds) of currently playing song
@@ -110,6 +114,19 @@
              }
           
      };
+         
+         
+        /*
+        *@desc changes the volume
+        *@param the value to which the volume should be changed
+        */
+        SongPlayer.setVolume = function(newVolume){
+            console.log(newVolume);
+            SongPlayer.volume = newVolume;
+            if (currentBuzzObject){
+                currentBuzzObject.setVolume(newVolume);    
+            }
+        }; 
          
         /**
         * @function pause
