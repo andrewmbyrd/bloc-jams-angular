@@ -14,8 +14,7 @@
                 
              //use buzz built in function to format time
              return buzz.toTimer(seconds);
-             
-         };
+        };
      }
  
      angular

@@ -7,23 +7,13 @@
              */
              var seconds = Number.parseFloat(seconds);
              
-            if (Number.isNaN(seconds)) {
-                return '-:--';
-            }
-
-            var wholeSeconds = Math.floor(seconds);
-            var minutes = Math.floor(wholeSeconds / 60);
-            var remainingSeconds = wholeSeconds % 60;
-
-            var output = minutes + ':';
-
-            if (remainingSeconds < 10) {
-                output += '0';   
-            }
-
-            output += remainingSeconds;
-
-            return output;
+             //checks if the input is null and formats accordingly
+             if (Number.isNaN(seconds)) {
+                 return '-:--';
+             }
+                
+             //use buzz built in function to format time
+             return buzz.toTimer(seconds);
         };
      }
  
