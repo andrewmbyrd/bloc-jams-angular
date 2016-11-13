@@ -191,7 +191,11 @@
             }
         }; 
          
-         
+        SongPlayer.mute = function(){
+            SongPlayer.volume = 0;
+            if(currentBuzzObject)
+                currentBuzzObject.setVolume(SongPlayer.volume);
+        } 
          
         /**
         * @function initialPlay

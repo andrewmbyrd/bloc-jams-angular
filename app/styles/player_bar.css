@@ -149,7 +149,16 @@
      font-size: 1.1rem;
      display: inline-block;
      vertical-align: middle;
+
  }
+
+.volume .icon:hover{
+    cursor: pointer;
+}
+
+.ion-volume-mute{
+    padding-right: 5px;
+}
 
  .player-bar .volume .seek-bar {
      display: inline-block;
