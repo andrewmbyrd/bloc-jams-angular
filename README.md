@@ -1,3 +1,6 @@
+## Notice
+Below are instructions on how to get the style of app up and running. My implementation can be found <a href="https://powerful-bastion-36583.herokuapp.com/">here</a>
+
 ## Bloc Frontend Project Starter
 
 A starter application for student projects in Bloc's [Frontend Web Development Course](https://www.bloc.io/frontend-development-bootcamp).
