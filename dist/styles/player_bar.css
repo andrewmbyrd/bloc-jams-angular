@@ -3,7 +3,7 @@
     bottom: 0;
     left: 0;
     right:0;
-    height:200px;
+    height:170px;
     background-color: rgba(255,255,255,0.3)
 }
 
@@ -23,12 +23,18 @@
      display: table;
      padding: 0;
      width: 90%;
-     min-height: 100%;
+     height:170px;
+     position: relative;
+     
  }
 
-.player-bar .control-group {
-     display: table-cell;
-     vertical-align: middle;
+.container .control-group {
+    height: 50px; 
+    display: table-cell;
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+     
  }
 
  .player-bar .main-controls {
@@ -50,6 +56,8 @@
      width: 50%;
      text-align: center;
      position: relative;
+     top: 70px;
+     
  }
 
 .player-bar .currently-playing .song-name,
@@ -70,7 +78,7 @@
 
 
  .player-bar .currently-playing .artist-name {
-     bottom: 1.1rem;
+     bottom: 6rem;
  }
 
 

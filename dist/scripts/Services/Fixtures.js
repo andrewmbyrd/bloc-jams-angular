@@ -130,8 +130,8 @@
          ]
      };
          var album10 = {
-         title: 'The Telephone',
-         artist: 'Guglielmo Marconi',
+         title: 'Have I GoNE',
+         artist: 'Malio Anderos',
          label: 'EM',
          year: '1909',
          albumArtUrl: '/assets/images/album_covers/14.png',
@@ -144,8 +144,8 @@
          ]
      };
          var album11 = {
-         title: 'The Telephone',
-         artist: 'Guglielmo Marconi',
+         title: 'To be Hired',
+         artist: 'This Studend',
          label: 'EM',
          year: '1909',
          albumArtUrl: '/assets/images/album_covers/15.png',
@@ -158,8 +158,8 @@
          ]
      };
          var album12 = {
-         title: 'The Telephone',
-         artist: 'Guglielmo Marconi',
+         title: 'Focus',
+         artist: 'ADHD',
          label: 'EM',
          year: '1909',
          albumArtUrl: '/assets/images/album_covers/16.png',
